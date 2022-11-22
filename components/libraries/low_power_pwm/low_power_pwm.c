@@ -105,7 +105,7 @@ static void pwm_timeout_handler(void * p_context)
     {
         led_off(p_pwm_instance);
         p_pwm_instance->evt_type = LOW_POWER_PWM_EVENT_PERIOD;
-        p_pwm_instance->timeout_ticks = (((p_pwm_instance->period - p_pwm_instance->duty_cycle)*p_pwm_instance->period)>>8) +
+        p_pwm_instance->timeout_ticks = (p_pwm_instance->period - ((p_pwm_instance->duty_cycle*p_pwm_instance->period)>>8)) +
                                   APP_TIMER_MIN_TIMEOUT_TICKS;
     }
     
